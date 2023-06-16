@@ -9,8 +9,10 @@ import { pineconeIndex } from "./pinecone-client.js";
 const filePath = "docs/april-2023.pdf";
 
 // TODO: accept filePath as an argument
-export const storeDoc = async () => {
-  const loader = new PDFLoader(filePath);
+export const storeDoc = async (loader: any, namespace: string) => {
+  if (!loader) {
+    throw new Error("loader is required");
+  }
   const rawDocs = await loader.load();
 
   /* Split text into chunks */
@@ -25,15 +27,15 @@ export const storeDoc = async () => {
   /*create and store the embeddings in the vectorStore*/
   await PineconeStore.fromDocuments(docs, new OpenAIEmbeddings(), {
     pineconeIndex,
-    namespace: "test-namespace",
+    namespace
   });
 };
 
 
-export const queryDoc = async (questions: string[]) => {
+export const queryDoc = async (questions: string[], namespace: string) => {
   const vectorStore = await PineconeStore.fromExistingIndex(
     new OpenAIEmbeddings(),
-    { pineconeIndex, namespace: "test-namespace" }
+    { pineconeIndex, namespace }
   );
 
   // Initialize the LLM to use to answer the question.

@@ -1,32 +1,29 @@
-import { OpenAI } from "langchain";
+import { OpenAI } from "langchain/llms/openai";
 import { ConversationalRetrievalQAChain } from "langchain/chains";
-import { TextLoader } from "langchain/document_loaders";
-import { OpenAIEmbeddings } from "langchain/embeddings";
+import { TextLoader } from "langchain/document_loaders/fs/text";
+import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { BufferMemory } from "langchain/memory";
-import { Chroma } from "langchain/vectorstores";
+import { PineconeStore } from "langchain/vectorstores/pinecone";
+import { storeDoc } from "./manage-docs.ts";
+import { pineconeIndex } from "./pinecone-client.ts";
 
+const namespace = "food-menu-test";
 // Create docs with a loader
 export const getOrders = async () => {
-    const loader = new TextLoader("docs/food_menu.txt");
-    const docs = await loader.load();
 
-    // console.log(docs[0].pageContent);
-    // Create vector store and index the docs
-    const vectorStore = await Chroma.fromDocuments(docs, new OpenAIEmbeddings(), {
-    collectionName: "a-test-collection",
-    });
+    // uncomment this to store the docs in pinecone, I already did this so no need to do it again unless you change the namespace
+    // const loader = new TextLoader("docs/food_menu.txt");
+    // await storeDoc(loader, namespace);
+
+    const vectorStore = await PineconeStore.fromExistingIndex(
+        new OpenAIEmbeddings(),
+        { pineconeIndex, namespace }
+    );
 
     const model = new OpenAI({
-    // modelName: "gpt-3.5-turbo",
     modelName: "gpt-3.5-turbo-16k",
     openAIApiKey: process.env.OPENAI_API_KEY,
     });
-
-    // const res = await model.call(
-    //   "What's a good idea for an application to build with GPT-3?"
-    // );
-
-    // console.log(res);
 
     const chain = ConversationalRetrievalQAChain.fromLLM(
     model,
