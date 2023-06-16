@@ -1,0 +1,335 @@
+In-Room Dining Menu
+
+Starters:
+1. Spicy Edamame Beans - 18 SAR
+   Ingredients: Steamed edamame beans tossed with sesame oil, garlic, chili flakes, and sea salt. Served with a tangy soy dipping sauce.
+   Spiciness: Medium
+   Vegan, Gluten-free
+
+2. Fresh Avocado Rolls - 32 SAR
+   Ingredients: Fresh avocado, cucumber, and carrot wrapped in rice paper. Served with a side of soy sauce and pickled ginger.
+   Spiciness: Mild
+   Vegan, Gluten-free
+
+3. Roasted Beet Salad - 38 SAR
+   Ingredients: Oven-roasted beets, mixed greens, crumbled goat cheese, toasted walnuts, and a drizzle of balsamic dressing.
+   Spiciness: Mild
+   Vegetarian, Gluten-free
+
+4. Caprese Skewers - 40 SAR
+   Ingredients: Skewers of cherry tomatoes, fresh mozzarella, and basil leaves, drizzled with balsamic glaze and extra virgin olive oil.
+   Spiciness: Mild
+   Vegetarian, Gluten-free
+
+5. Spicy Tuna Tartare - 55 SAR
+   Ingredients: Freshly diced tuna mixed with spicy mayo, sesame oil, soy sauce, and finely chopped scallions. Served with crispy wonton chips.
+   Spiciness: Medium
+   Gluten-free
+
+6. Crispy Calamari - 48 SAR
+   Ingredients: Tender calamari rings lightly battered and deep-fried until golden brown. Served with a zesty marinara sauce and lemon wedges.
+   Spiciness: Mild
+   Gluten-free
+
+7. Mushroom Bruschetta - 42 SAR
+   Ingredients: Sliced baguette topped with sautéed mushrooms, garlic, fresh thyme, and Parmesan cheese. Finished with a drizzle of balsamic glaze.
+   Spiciness: Mild
+   Vegetarian
+
+8. Lebanese Mezze Platter - 58 SAR
+   Ingredients: A selection of traditional Lebanese appetizers including hummus, baba ganoush, tabbouleh, falafel, and pita bread. Served with pickles and olives.
+   Spiciness: Mild
+   Vegan option available, Gluten-free option available
+
+9. Thai Spring Rolls - 45 SAR
+   Ingredients: Crispy vegetable spring rolls filled with julienned carrots, cabbage, bean sprouts, and mushrooms. Served with a sweet chili dipping sauce.
+   Spiciness: Mild
+   Vegan
+
+10. Gazpacho - 35 SAR
+    Ingredients: Chilled tomato soup blended with cucumber, bell peppers, garlic, olive oil, and sherry vinegar. Garnished with fresh herbs and croutons.
+    Spiciness: Mild
+    Vegan, Gluten-free
+
+Soups:
+11. Chicken Noodle Soup - 32 SAR
+    Ingredients: Tender chicken, egg noodles, carrots, celery, and onions simmered in a flavorful chicken broth. Garnished with fresh parsley.
+    Spiciness: Mild
+    Gluten-free
+
+12. Cream of Mushroom Soup - 35 SAR
+    Ingredients: Velvety smooth soup made with sautéed mushrooms, onions, garlic, fresh herbs, and cream. Finished with a drizzle of truffle oil.
+    Spiciness: Mild
+    Vegetarian
+
+13. Seafood Chowder - 45 SAR
+    Ingredients: A hearty medley of fish, shrimp, clams, and potatoes in a creamy broth infused with aromatic herbs and spices. Served with warm bread rolls.
+    Spiciness: Mild
+    Gluten-free
+
+14. Lentil Soup
+
+ - 28 SAR
+    Ingredients: A comforting soup made with lentils, vegetables, garlic, and fragrant spices. Served with a squeeze of lemon and fresh herbs.
+    Spiciness: Mild
+    Vegan, Gluten-free
+
+Salads:
+15. Caesar Salad - 38 SAR
+    Ingredients: Crisp romaine lettuce tossed in a classic Caesar dressing, topped with shaved Parmesan cheese and garlic croutons.
+    Spiciness: Mild
+    Vegetarian option available
+
+16. Greek Salad - 42 SAR
+    Ingredients: Fresh mixed greens, cucumbers, tomatoes, red onions, Kalamata olives, and feta cheese. Dressed with a lemon-herb vinaigrette.
+    Spiciness: Mild
+    Vegetarian, Gluten-free
+
+17. Quinoa Salad - 45 SAR
+    Ingredients: Nutrient-rich quinoa, mixed with colorful bell peppers, cherry tomatoes, cucumbers, red onions, and fresh herbs. Tossed in a tangy lemon dressing.
+    Spiciness: Mild
+    Vegan, Gluten-free
+
+18. Waldorf Salad - 38 SAR
+    Ingredients: A refreshing combination of crisp apples, celery, grapes, walnuts, and mixed greens. Tossed in a creamy yogurt dressing.
+    Spiciness: Mild
+    Vegetarian, Gluten-free
+
+19. Thai Beef Salad - 55 SAR
+    Ingredients: Grilled beef tenderloin marinated in a Thai dressing, served on a bed of mixed greens with cucumber, cherry tomatoes, red onions, and cilantro.
+    Spiciness: Medium
+    Gluten-free
+
+20. Cobb Salad - 48 SAR
+    Ingredients: Grilled chicken, crispy bacon, hard-boiled eggs, avocado, tomatoes, blue cheese crumbles, and mixed greens. Served with a tangy ranch dressing.
+    Spiciness: Mild
+    Gluten-free
+
+Sandwiches:
+21. Classic Club Sandwich - 55 SAR
+    Ingredients: Triple-decker sandwich with roasted turkey, crispy bacon, lettuce, tomato, and mayonnaise. Served with French fries and coleslaw.
+    Spiciness: Mild
+    Option available without bacon
+
+22. Grilled Vegetable Panini - 48 SAR
+    Ingredients: Grilled zucchini, eggplant, bell peppers, and mozzarella cheese, layered on ciabatta bread with sun-dried tomato pesto. Served with a side salad.
+    Spiciness: Mild
+    Vegetarian
+
+23. Chicken Caesar Wrap - 45 SAR
+    Ingredients: Grilled chicken, romaine lettuce, Parmesan cheese, and Caesar dressing wrapped in a flour tortilla. Served with French fries.
+    Spiciness: Mild
+
+24. Moroccan Lamb Burger - 58 SAR
+    Ingredients: Juicy lamb patty seasoned with Moroccan spices, topped with caramelized onions, feta cheese, and mint yogurt sauce. Served with sweet potato fries.
+    Spiciness: Mild
+
+25. Smoked Salmon Bagel - 52 SAR
+    Ingredients: Freshly toasted bagel topped with smoked salmon, cream cheese, red onions, capers, and dill. Served with mixed greens.
+    Spiciness: Mild
+
+26. Portobello Mushroom Burger - 48 SAR
+    Ingredients: Grilled Portobello mushroom cap marinated in balsamic glaze, topped with Swiss cheese, roasted red peppers, and basil aioli. Served with sweet potato fries.
+    Spiciness: Mild
+    Vegetarian
+
+27. Falafel Wrap - 42 SAR
+    Ingredients: Homemade falafel balls, lettuce, tomatoes, cucumber, pickled turnips, tahini sauce, and fresh herbs wrapped
+
+ in a warm pita bread. Served with a side of hummus.
+    Spiciness: Mild
+    Vegan option available
+
+Pasta:
+28. Spaghetti Aglio e Olio - 48 SAR
+    Ingredients: Spaghetti tossed in a garlic-infused olive oil, chili flakes, parsley, and Parmesan cheese.
+    Spiciness: Medium
+    Vegetarian
+
+29. Fettuccine Alfredo - 55 SAR
+    Ingredients: Fettuccine pasta coated in a creamy Alfredo sauce made with butter, Parmesan cheese, and a hint of garlic. Garnished with fresh parsley.
+    Spiciness: Mild
+    Vegetarian
+
+30. Penne Arrabbiata - 48 SAR
+    Ingredients: Penne pasta tossed in a spicy tomato sauce made with garlic, chili flakes, tomatoes, and fresh basil. Finished with grated Parmesan cheese.
+    Spiciness: Spicy
+    Vegetarian, Vegan option available
+
+31. Pesto Linguine - 55 SAR
+    Ingredients: Linguine pasta tossed in a vibrant basil pesto sauce made with pine nuts, garlic, Parmesan cheese, and olive oil. Garnished with cherry tomatoes and Parmesan shavings.
+    Spiciness: Mild
+    Vegetarian
+
+32. Seafood Linguine - 62 SAR
+    Ingredients: Linguine pasta tossed with a medley of shrimp, mussels, and calamari in a garlic white wine sauce. Finished with fresh herbs and lemon zest.
+    Spiciness: Mild
+
+33. Gnocchi alla Sorrentina - 55 SAR
+    Ingredients: Soft potato gnocchi baked in a tomato sauce with mozzarella cheese, fresh basil, and Parmesan. Served with garlic bread.
+    Spiciness: Mild
+    Vegetarian
+
+34. Rigatoni Bolognese - 58 SAR
+    Ingredients: Rigatoni pasta topped with a rich and hearty meat sauce made with ground beef, tomatoes, onions, carrots, celery, and aromatic herbs. Finished with Parmesan cheese.
+    Spiciness: Mild
+
+35. Vegetarian Lasagna - 55 SAR
+    Ingredients: Layers of pasta, tomato sauce, sautéed vegetables, and creamy béchamel sauce. Baked with mozzarella and Parmesan cheese.
+    Spiciness: Mild
+    Vegetarian
+
+36. Lobster Ravioli - 75 SAR
+    Ingredients: Fresh lobster-filled ravioli served in a rich lobster bisque sauce, garnished with chives and Parmesan cheese.
+    Spiciness: Mild
+
+Main Courses:
+37. Grilled Beef Tenderloin - 85 SAR
+    Ingredients: Prime beef tenderloin grilled to perfection and served with roasted baby potatoes, sautéed vegetables, and a choice of sauce (peppercorn, mushroom, or red wine reduction).
+    Spiciness: Mild
+    Gluten-free
+
+38. Lamb Chops - 82 SAR
+    Ingredients: Juicy grilled lamb chops marinated in a blend of herbs and spices. Served with mashed potatoes, grilled asparagus, and a rosemary-infused jus.
+    Spiciness: Mild
+    Gluten-free
+
+39. Grilled Chicken Breast - 65 SAR
+    Ingredients: Tender grilled chicken breast seasoned with herbs and spices. Served with steamed rice, sautéed vegetables, and a choice of sauce (lemon butter, mushroom, or barbecue).
+    Spiciness: Mild
+    Gluten-free
+
+40. Grilled Sea Bass - 75 SAR
+    Ingredients: Fresh sea bass fillet marinated in lemon zest and herbs, grilled to perfection. Served with lemon-caper butter sauce, roasted potatoes, and seasonal vegetables.
+
+
+    Spiciness: Mild
+    Gluten-free
+
+41. Vegetable Stir-Fry - 48 SAR
+    Ingredients: Assorted fresh vegetables stir-fried in a light soy sauce with garlic and ginger. Served with steamed jasmine rice.
+    Spiciness: Mild
+    Vegan, Gluten-free
+
+42. Butter Chicken - 58 SAR
+    Ingredients: Tandoori-marinated chicken cooked in a creamy tomato-based sauce with aromatic spices. Served with fragrant basmati rice and garlic naan.
+    Spiciness: Mild
+    Gluten-free option available
+
+43. Eggplant Parmesan - 55 SAR
+    Ingredients: Breaded and fried eggplant slices layered with marinara sauce, mozzarella, and Parmesan cheese. Baked to perfection and served with spaghetti marinara.
+    Spiciness: Mild
+    Vegetarian
+
+44. Beef Rendang - 68 SAR
+    Ingredients: Slow-cooked tender beef in a rich and aromatic coconut curry sauce, served with steamed rice and pickled vegetables.
+    Spiciness: Spicy
+    Gluten-free
+
+45. Shrimp Scampi - 75 SAR
+    Ingredients: Sautéed jumbo shrimp in a garlic-infused butter sauce with white wine, lemon juice, and parsley. Served over linguine pasta.
+    Spiciness: Mild
+    Gluten-free option available
+
+46. Spinach and Ricotta Stuffed Chicken - 65 SAR
+    Ingredients: Chicken breast stuffed with a savory mixture of spinach, ricotta cheese, and garlic. Served with mashed potatoes, roasted vegetables, and a creamy herb sauce.
+    Spiciness: Mild
+    Gluten-free
+
+47. Thai Green Curry - 58 SAR
+    Ingredients: A fragrant Thai green curry made with coconut milk, green curry paste, mixed vegetables, and your choice of chicken, beef, or tofu. Served with steamed jasmine rice.
+    Spiciness: Spicy
+    Vegan option available, Gluten-free
+
+48. Vegetable Tagine - 55 SAR
+    Ingredients: A Moroccan-inspired stew with a medley of seasonal vegetables, chickpeas, and aromatic spices. Served with couscous and warm flatbread.
+    Spiciness: Mild
+    Vegan, Gluten-free option available
+
+49. Chicken Teriyaki - 62 SAR
+    Ingredients: Grilled chicken glazed with a sweet and tangy teriyaki sauce. Served with steamed rice and stir-fried vegetables.
+    Spiciness: Mild
+    Gluten-free
+
+50. Pan-Seared Salmon with Dill Sauce - 75 SAR
+    Ingredients: Fresh salmon fillet pan-seared to perfection, topped with a creamy dill sauce. Served with roasted baby potatoes and grilled asparagus.
+    Spiciness: Mild
+    Gluten-free
+
+Please note that the menu is subject to availability and may vary based on seasonal ingredients.
+
+In-room dining serves food from 11 AM to 5 AM
+
+Beverage Menu:
+
+Soft Drinks:
+
+Coca-Cola - 12 SAR
+Classic cola with a refreshing taste.
+
+Sprite - 12 SAR
+Clear lemon-lime soda, crisp and bubbly.
+
+Fanta Orange - 12 SAR
+Orange-flavored carbonated drink, sweet and tangy.
+
+Ginger Ale - 12 SAR
+Carbonated ginger-flavored soda, mildly spicy and refreshing.
+
+Tonic Water - 12 SAR
+Bitter and effervescent mixer, perfect for cocktails or on its own.
+
+Sodas:
+6. Club Soda - 10 SAR
+Carbonated water with added minerals for a refreshing and bubbly experience.
+
+Bitter Lemon - 12 SAR
+A tangy and slightly bitter lemon-flavored soda.
+Fresh Juices:
+8. Orange Juice - 15 SAR
+Freshly squeezed orange juice, rich in Vitamin C.
+
+Pineapple Juice - 15 SAR
+Sweet and tropical pineapple juice, perfect for a refreshing boost.
+
+Apple Juice - 15 SAR
+Pure apple juice, crisp and naturally sweet.
+
+Watermelon Juice - 18 SAR
+Refreshing and hydrating watermelon juice, ideal for hot days.
+
+Hot Drinks:
+12. Coffee - 18 SAR
+Freshly brewed coffee made from quality beans.
+
+Cappuccino - 20 SAR
+Espresso topped with frothy steamed milk and a sprinkle of cocoa.
+
+Latte - 20 SAR
+Espresso with steamed milk, smooth and creamy.
+
+Hot Chocolate - 20 SAR
+Rich and indulgent chocolate drink, topped with whipped cream.
+
+Selection of Teas:
+16. English Breakfast Tea - 15 SAR
+A full-bodied and robust black tea, perfect for breakfast.
+
+Earl Grey Tea - 15 SAR
+Black tea infused with bergamot, offering a fragrant and citrusy flavor.
+
+Green Tea - 15 SAR
+Light and refreshing tea with a subtle grassy note.
+
+Chamomile Tea - 15 SAR
+A calming herbal infusion, known for its soothing properties.
+
+Peppermint Tea - 15 SAR
+Invigorating and minty herbal tea, aids digestion and freshens breath.
+
+Waters:
+21. Mineral Water (Still/Sparkling) - 10 SAR
+Bottled mineral water sourced from natural springs.
+
+Flavored Water (Lemon/Mint/Cucumber) - 12 SAR
+Infused water with a hint of lemon, mint, or cucumber, for a refreshing twist.
