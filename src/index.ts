@@ -1,19 +1,9 @@
 import * as dotenv from "dotenv";
-import { OpenAI } from "langchain/llms/openai";
-
-import { ConversationalRetrievalQAChain } from "langchain/chains";
-
-import { TextLoader } from "langchain/document_loaders/fs/text";
-
-import { Chroma } from "langchain/vectorstores/chroma";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { BufferMemory } from "langchain/memory";
+import { getOrders } from "./agent.ts";
 
 dotenv.config();
 
-// Create docs with a loader
-const loader = new TextLoader("src/food_menu.txt");
-const docs = await loader.load();
+getOrders();
 
 // console.log(docs[0].pageContent);
 // Create vector store and index the docs
