@@ -4,6 +4,7 @@ import { queryDoc, storeDoc } from "./manage-docs.ts";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { Telegraf } from "telegraf";
 import { Model as ChatWithTools } from "./models/chatWithTools.ts";
+import { QaDocModel } from "./agentClass.ts";
 
 dotenv.config();
 
@@ -28,7 +29,8 @@ dotenv.config();
 const telegramToken = process.env.TELEGRAM_TOKEN!;
 
 const bot = new Telegraf(telegramToken);
-let model = new ChatWithTools();
+const model = new QaDocModel();
+await model.init();
 
 bot.start((ctx) => {
   ctx.reply("Welcome to my Telegram bot!");
