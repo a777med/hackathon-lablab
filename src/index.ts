@@ -29,8 +29,8 @@ dotenv.config();
 const telegramToken = process.env.TELEGRAM_TOKEN!;
 
 const bot = new Telegraf(telegramToken);
-const model = new QaDocModel();
-await model.init();
+const model = new ChatWithTools();
+// await model.init();
 
 bot.start((ctx) => {
   ctx.reply("Welcome to my Telegram bot!");

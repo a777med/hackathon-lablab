@@ -4,13 +4,13 @@ import { ChatOpenAI } from "langchain/chat_models/openai";
 import { BufferMemory } from "langchain/memory";
 import { Configuration } from "openai";
 import { OpenAIApi } from "openai";
-import { googleTool } from "./tools/google.ts";
+import { vectorStoreTool } from "./tools/vectorestoreQA.ts";
 
 const openAIApiKey = process.env.OPENAI_API_KEY!;
 
 const params = {
   verbose: true,
-  temperature: 1,
+  temperature: 0,
   openAIApiKey,
   modelName: "gpt-3.5-turbo-16k",
   maxConcurrency: 1,
@@ -29,7 +29,7 @@ export class Model {
       apiKey: openAIApiKey,
     });
 
-    this.tools = [googleTool];
+    this.tools = [vectorStoreTool];
     this.openai = new OpenAIApi(configuration);
     this.model = new ChatOpenAI(params, configuration);
   }
@@ -40,19 +40,20 @@ export class Model {
         this.tools,
         this.model,
         {
-          agentType: 'chat-conversational-react-description'
+          agentType: 'chat-conversational-react-description',
+          memory : new BufferMemory({
+            returnMessages: true,
+            memoryKey: "chat_history",
+            inputKey: "input",
+          })
         }
       );
-      this.executor.memory = new BufferMemory({
-        returnMessages: true,
-        memoryKey: "chat_history",
-        inputKey: "input",
-      });
     }
 
     const response = await this.executor!.call({ input });
 
-    console.log("Model response: " + response);
+    console.log("Model input: " + input);
+    console.log("Model response: " + response.output);
 
     return response.output;
   }
