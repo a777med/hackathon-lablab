@@ -4,51 +4,49 @@ import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { PineconeStore } from "langchain/vectorstores/pinecone";
-import { pinecone } from "./pinecone-client.js";
-
+import { pineconeIndex } from "./pinecone-client.js";
 
 const filePath = "docs/april-2023.pdf";
 
+// TODO: accept filePath as an argument
+export const storeDoc = async () => {
+  const loader = new PDFLoader(filePath);
+  const rawDocs = await loader.load();
 
-export const uploadDoc = async () => {
-    const loader = new PDFLoader(filePath);
-    const rawDocs = await loader.load();
+  /* Split text into chunks */
+  const textSplitter = new RecursiveCharacterTextSplitter({
+    chunkSize: 1000,
+    chunkOverlap: 200,
+  });
 
-    const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX_NAME || "");
+  const docs = await textSplitter.splitDocuments(rawDocs);
 
-    /* Split text into chunks */
-    const textSplitter = new RecursiveCharacterTextSplitter({
-      chunkSize: 1000,
-      chunkOverlap: 200,
-    });
+  console.log("creating vector store...");
+  /*create and store the embeddings in the vectorStore*/
+  await PineconeStore.fromDocuments(docs, new OpenAIEmbeddings(), {
+    pineconeIndex,
+    namespace: "test-namespace",
+  });
+};
 
-    const docs = await textSplitter.splitDocuments(rawDocs);
 
-    console.log("creating vector store...");
-    /*create and store the embeddings in the vectorStore*/
-    const vectorStore = await PineconeStore.fromDocuments(
-      docs,
-      new OpenAIEmbeddings(),
-      {
-        pineconeIndex,
-      }
-    );
+export const queryDoc = async (questions: string[]) => {
+  const vectorStore = await PineconeStore.fromExistingIndex(
+    new OpenAIEmbeddings(),
+    { pineconeIndex, namespace: "test-namespace" }
+  );
 
-    // Initialize the LLM to use to answer the question.
-    const model = new OpenAI({
-      modelName: "gpt-3.5-turbo-16k",
-      openAIApiKey: process.env.OPENAI_API_KEY,
-    });
+  // Initialize the LLM to use to answer the question.
+  const model = new OpenAI({
+    modelName: "gpt-3.5-turbo-16k",
+    openAIApiKey: process.env.OPENAI_API_KEY,
+  });
 
-    // Create a chain that uses the OpenAI LLM and pinecone vector store.
-    const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever());
-    const res = await chain.call({
-      query: "What does the pdf talk about?",
-    });
+  // Create a chain that uses the OpenAI LLM and pinecone vector store.
+  const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever());
+  for (const question of questions) {
+    const res = await chain.call({ query: question });
+    console.log({ question });
     console.log({ res });
-
-    const res2 = await chain.call({
-      query: "what is the main cause for inflation?",
-    });
-    console.log({ res2 });
+  }
 };

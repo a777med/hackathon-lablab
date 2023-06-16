@@ -7,3 +7,4 @@ await client.init({
 });
 
 export const pinecone = client;
+export const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX_NAME || "");
