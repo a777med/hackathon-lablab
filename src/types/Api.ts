@@ -19,6 +19,392 @@ export interface Error {
   };
 }
 
+export interface FoodOrderItemRequest {
+  data: {
+    quantity?: number;
+    /** @example "string or id" */
+    in_room_dining_food_order?: number | string;
+    /** @example "string or id" */
+    in_room_dining_food_menu?: number | string;
+  };
+}
+
+export interface FoodOrderItemListResponseDataItem {
+  id?: number;
+  attributes?: FoodOrderItem;
+}
+
+export interface FoodOrderItemListResponse {
+  data?: FoodOrderItemListResponseDataItem[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface FoodOrderItem {
+  quantity?: number;
+  in_room_dining_food_order?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        special_note?: string;
+        room_number?: string;
+        food_order_items?: {
+          data?: {
+            id?: number;
+            attributes?: {
+              quantity?: number;
+              in_room_dining_food_order?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+              in_room_dining_food_menu?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    dishname?: string;
+                    ingredients?: string;
+                    price?: number;
+                    boost?: boolean;
+                    picture?: {
+                      data?: {
+                        id?: number;
+                        attributes?: {
+                          name?: string;
+                          alternativeText?: string;
+                          caption?: string;
+                          width?: number;
+                          height?: number;
+                          formats?: any;
+                          hash?: string;
+                          ext?: string;
+                          mime?: string;
+                          /** @format float */
+                          size?: number;
+                          url?: string;
+                          previewUrl?: string;
+                          provider?: string;
+                          provider_metadata?: any;
+                          related?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            }[];
+                          };
+                          folder?: {
+                            data?: {
+                              id?: number;
+                              attributes?: {
+                                name?: string;
+                                pathId?: number;
+                                parent?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                                children?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  }[];
+                                };
+                                files?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: {
+                                      name?: string;
+                                      alternativeText?: string;
+                                      caption?: string;
+                                      width?: number;
+                                      height?: number;
+                                      formats?: any;
+                                      hash?: string;
+                                      ext?: string;
+                                      mime?: string;
+                                      /** @format float */
+                                      size?: number;
+                                      url?: string;
+                                      previewUrl?: string;
+                                      provider?: string;
+                                      provider_metadata?: any;
+                                      related?: {
+                                        data?: {
+                                          id?: number;
+                                          attributes?: object;
+                                        }[];
+                                      };
+                                      folder?: {
+                                        data?: {
+                                          id?: number;
+                                          attributes?: object;
+                                        };
+                                      };
+                                      folderPath?: string;
+                                      /** @format date-time */
+                                      createdAt?: string;
+                                      /** @format date-time */
+                                      updatedAt?: string;
+                                      createdBy?: {
+                                        data?: {
+                                          id?: number;
+                                          attributes?: {
+                                            firstname?: string;
+                                            lastname?: string;
+                                            username?: string;
+                                            /** @format email */
+                                            email?: string;
+                                            resetPasswordToken?: string;
+                                            registrationToken?: string;
+                                            isActive?: boolean;
+                                            roles?: {
+                                              data?: {
+                                                id?: number;
+                                                attributes?: {
+                                                  name?: string;
+                                                  code?: string;
+                                                  description?: string;
+                                                  users?: {
+                                                    data?: {
+                                                      id?: number;
+                                                      attributes?: object;
+                                                    }[];
+                                                  };
+                                                  permissions?: {
+                                                    data?: {
+                                                      id?: number;
+                                                      attributes?: {
+                                                        action?: string;
+                                                        subject?: string;
+                                                        properties?: any;
+                                                        conditions?: any;
+                                                        role?: {
+                                                          data?: {
+                                                            id?: number;
+                                                            attributes?: object;
+                                                          };
+                                                        };
+                                                        /** @format date-time */
+                                                        createdAt?: string;
+                                                        /** @format date-time */
+                                                        updatedAt?: string;
+                                                        createdBy?: {
+                                                          data?: {
+                                                            id?: number;
+                                                            attributes?: object;
+                                                          };
+                                                        };
+                                                        updatedBy?: {
+                                                          data?: {
+                                                            id?: number;
+                                                            attributes?: object;
+                                                          };
+                                                        };
+                                                      };
+                                                    }[];
+                                                  };
+                                                  /** @format date-time */
+                                                  createdAt?: string;
+                                                  /** @format date-time */
+                                                  updatedAt?: string;
+                                                  createdBy?: {
+                                                    data?: {
+                                                      id?: number;
+                                                      attributes?: object;
+                                                    };
+                                                  };
+                                                  updatedBy?: {
+                                                    data?: {
+                                                      id?: number;
+                                                      attributes?: object;
+                                                    };
+                                                  };
+                                                };
+                                              }[];
+                                            };
+                                            blocked?: boolean;
+                                            preferedLanguage?: string;
+                                            /** @format date-time */
+                                            createdAt?: string;
+                                            /** @format date-time */
+                                            updatedAt?: string;
+                                            createdBy?: {
+                                              data?: {
+                                                id?: number;
+                                                attributes?: object;
+                                              };
+                                            };
+                                            updatedBy?: {
+                                              data?: {
+                                                id?: number;
+                                                attributes?: object;
+                                              };
+                                            };
+                                          };
+                                        };
+                                      };
+                                      updatedBy?: {
+                                        data?: {
+                                          id?: number;
+                                          attributes?: object;
+                                        };
+                                      };
+                                    };
+                                  }[];
+                                };
+                                path?: string;
+                                /** @format date-time */
+                                createdAt?: string;
+                                /** @format date-time */
+                                updatedAt?: string;
+                                createdBy?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                                updatedBy?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                              };
+                            };
+                          };
+                          folderPath?: string;
+                          /** @format date-time */
+                          createdAt?: string;
+                          /** @format date-time */
+                          updatedAt?: string;
+                          createdBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                          updatedBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                        };
+                      };
+                    };
+                    specialnote?: string;
+                    category?: "starter" | "maindish" | "snack" | "beverage" | "desserts";
+                    currency?: string;
+                    availability?: boolean;
+                    average_time_in_mins?: number;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    /** @format date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+              /** @format date-time */
+              createdAt?: string;
+              /** @format date-time */
+              updatedAt?: string;
+              /** @format date-time */
+              publishedAt?: string;
+              createdBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+              updatedBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+            };
+          }[];
+        };
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        /** @format date-time */
+        publishedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
+  in_room_dining_food_menu?: {
+    data?: {
+      id?: number;
+      attributes?: object;
+    };
+  };
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    data?: {
+      id?: number;
+      attributes?: object;
+    };
+  };
+  updatedBy?: {
+    data?: {
+      id?: number;
+      attributes?: object;
+    };
+  };
+}
+
+export interface FoodOrderItemResponseDataObject {
+  id?: number;
+  attributes?: FoodOrderItem;
+}
+
+export interface FoodOrderItemResponse {
+  data?: FoodOrderItemResponseDataObject;
+  meta?: object;
+}
+
 export interface InRoomDiningFoodMenuRequest {
   data: {
     dishname?: string;
@@ -317,6 +703,385 @@ export interface InRoomDiningFoodMenuResponseDataObject {
 
 export interface InRoomDiningFoodMenuResponse {
   data?: InRoomDiningFoodMenuResponseDataObject;
+  meta?: object;
+}
+
+export interface InRoomDiningFoodOrderRequest {
+  data: {
+    special_note?: string;
+    room_number?: string;
+    food_order_items?: (number | string)[];
+  };
+}
+
+export interface InRoomDiningFoodOrderListResponseDataItem {
+  id?: number;
+  attributes?: InRoomDiningFoodOrder;
+}
+
+export interface InRoomDiningFoodOrderListResponse {
+  data?: InRoomDiningFoodOrderListResponseDataItem[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface InRoomDiningFoodOrder {
+  special_note?: string;
+  room_number?: string;
+  food_order_items?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        quantity?: number;
+        in_room_dining_food_order?: {
+          data?: {
+            id?: number;
+            attributes?: {
+              special_note?: string;
+              room_number?: string;
+              food_order_items?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                }[];
+              };
+              /** @format date-time */
+              createdAt?: string;
+              /** @format date-time */
+              updatedAt?: string;
+              /** @format date-time */
+              publishedAt?: string;
+              createdBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    firstname?: string;
+                    lastname?: string;
+                    username?: string;
+                    /** @format email */
+                    email?: string;
+                    resetPasswordToken?: string;
+                    registrationToken?: string;
+                    isActive?: boolean;
+                    roles?: {
+                      data?: {
+                        id?: number;
+                        attributes?: {
+                          name?: string;
+                          code?: string;
+                          description?: string;
+                          users?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            }[];
+                          };
+                          permissions?: {
+                            data?: {
+                              id?: number;
+                              attributes?: {
+                                action?: string;
+                                subject?: string;
+                                properties?: any;
+                                conditions?: any;
+                                role?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                                /** @format date-time */
+                                createdAt?: string;
+                                /** @format date-time */
+                                updatedAt?: string;
+                                createdBy?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                                updatedBy?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                              };
+                            }[];
+                          };
+                          /** @format date-time */
+                          createdAt?: string;
+                          /** @format date-time */
+                          updatedAt?: string;
+                          createdBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                          updatedBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                        };
+                      }[];
+                    };
+                    blocked?: boolean;
+                    preferedLanguage?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+              updatedBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+            };
+          };
+        };
+        in_room_dining_food_menu?: {
+          data?: {
+            id?: number;
+            attributes?: {
+              dishname?: string;
+              ingredients?: string;
+              price?: number;
+              boost?: boolean;
+              picture?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: {
+                          name?: string;
+                          pathId?: number;
+                          parent?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                          children?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            }[];
+                          };
+                          files?: {
+                            data?: {
+                              id?: number;
+                              attributes?: {
+                                name?: string;
+                                alternativeText?: string;
+                                caption?: string;
+                                width?: number;
+                                height?: number;
+                                formats?: any;
+                                hash?: string;
+                                ext?: string;
+                                mime?: string;
+                                /** @format float */
+                                size?: number;
+                                url?: string;
+                                previewUrl?: string;
+                                provider?: string;
+                                provider_metadata?: any;
+                                related?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  }[];
+                                };
+                                folder?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                                folderPath?: string;
+                                /** @format date-time */
+                                createdAt?: string;
+                                /** @format date-time */
+                                updatedAt?: string;
+                                createdBy?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                                updatedBy?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                              };
+                            }[];
+                          };
+                          path?: string;
+                          /** @format date-time */
+                          createdAt?: string;
+                          /** @format date-time */
+                          updatedAt?: string;
+                          createdBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                          updatedBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                        };
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                };
+              };
+              specialnote?: string;
+              category?: "starter" | "maindish" | "snack" | "beverage" | "desserts";
+              currency?: string;
+              availability?: boolean;
+              average_time_in_mins?: number;
+              /** @format date-time */
+              createdAt?: string;
+              /** @format date-time */
+              updatedAt?: string;
+              /** @format date-time */
+              publishedAt?: string;
+              createdBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+              updatedBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+            };
+          };
+        };
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        /** @format date-time */
+        publishedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    }[];
+  };
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    data?: {
+      id?: number;
+      attributes?: object;
+    };
+  };
+  updatedBy?: {
+    data?: {
+      id?: number;
+      attributes?: object;
+    };
+  };
+}
+
+export interface InRoomDiningFoodOrderResponseDataObject {
+  id?: number;
+  attributes?: InRoomDiningFoodOrder;
+}
+
+export interface InRoomDiningFoodOrderResponse {
+  data?: InRoomDiningFoodOrderResponseDataObject;
   meta?: object;
 }
 
@@ -1279,6 +2044,121 @@ export class HttpClient<SecurityDataType = unknown> {
  * @contact TEAM <contact-email@something.io> (mywebsite.io)
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+  foodOrderItems = {
+    /**
+     * No description
+     *
+     * @tags Food-order-item
+     * @name GetFoodOrderItems
+     * @request GET:/food-order-items
+     * @secure
+     */
+    getFoodOrderItems: (
+      query?: {
+        /** Sort by attributes ascending (asc) or descending (desc) */
+        sort?: string;
+        /** Return page/pageSize (default: true) */
+        "pagination[withCount]"?: boolean;
+        /** Page number (default: 0) */
+        "pagination[page]"?: number;
+        /** Page size (default: 25) */
+        "pagination[pageSize]"?: number;
+        /** Offset value (default: 0) */
+        "pagination[start]"?: number;
+        /** Number of entities to return (default: 25) */
+        "pagination[limit]"?: number;
+        /** Fields to return (ex: title,author) */
+        fields?: string;
+        /** Relations to return */
+        populate?: string;
+        /** Filters to apply */
+        filters?: object;
+        /** Locale to apply */
+        locale?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<FoodOrderItemListResponse, Error>({
+        path: `/food-order-items`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Food-order-item
+     * @name PostFoodOrderItems
+     * @request POST:/food-order-items
+     * @secure
+     */
+    postFoodOrderItems: (data: FoodOrderItemRequest, params: RequestParams = {}) =>
+      this.request<FoodOrderItemResponse, Error>({
+        path: `/food-order-items`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Food-order-item
+     * @name GetFoodOrderItemsId
+     * @request GET:/food-order-items/{id}
+     * @secure
+     */
+    getFoodOrderItemsId: (id: number, params: RequestParams = {}) =>
+      this.request<FoodOrderItemResponse, Error>({
+        path: `/food-order-items/${id}`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Food-order-item
+     * @name PutFoodOrderItemsId
+     * @request PUT:/food-order-items/{id}
+     * @secure
+     */
+    putFoodOrderItemsId: (id: number, data: FoodOrderItemRequest, params: RequestParams = {}) =>
+      this.request<FoodOrderItemResponse, Error>({
+        path: `/food-order-items/${id}`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Food-order-item
+     * @name DeleteFoodOrderItemsId
+     * @request DELETE:/food-order-items/{id}
+     * @secure
+     */
+    deleteFoodOrderItemsId: (id: number, params: RequestParams = {}) =>
+      this.request<number, Error>({
+        path: `/food-order-items/${id}`,
+        method: "DELETE",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+  };
   inRoomDiningFoodMenus = {
     /**
      * No description
@@ -1388,6 +2268,121 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     deleteInRoomDiningFoodMenusId: (id: number, params: RequestParams = {}) =>
       this.request<number, Error>({
         path: `/in-room-dining-food-menus/${id}`,
+        method: "DELETE",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+  };
+  inRoomDiningFoodOrders = {
+    /**
+     * No description
+     *
+     * @tags In-room-dining-food-order
+     * @name GetInRoomDiningFoodOrders
+     * @request GET:/in-room-dining-food-orders
+     * @secure
+     */
+    getInRoomDiningFoodOrders: (
+      query?: {
+        /** Sort by attributes ascending (asc) or descending (desc) */
+        sort?: string;
+        /** Return page/pageSize (default: true) */
+        "pagination[withCount]"?: boolean;
+        /** Page number (default: 0) */
+        "pagination[page]"?: number;
+        /** Page size (default: 25) */
+        "pagination[pageSize]"?: number;
+        /** Offset value (default: 0) */
+        "pagination[start]"?: number;
+        /** Number of entities to return (default: 25) */
+        "pagination[limit]"?: number;
+        /** Fields to return (ex: title,author) */
+        fields?: string;
+        /** Relations to return */
+        populate?: string;
+        /** Filters to apply */
+        filters?: object;
+        /** Locale to apply */
+        locale?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<InRoomDiningFoodOrderListResponse, Error>({
+        path: `/in-room-dining-food-orders`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags In-room-dining-food-order
+     * @name PostInRoomDiningFoodOrders
+     * @request POST:/in-room-dining-food-orders
+     * @secure
+     */
+    postInRoomDiningFoodOrders: (data: InRoomDiningFoodOrderRequest, params: RequestParams = {}) =>
+      this.request<InRoomDiningFoodOrderResponse, Error>({
+        path: `/in-room-dining-food-orders`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags In-room-dining-food-order
+     * @name GetInRoomDiningFoodOrdersId
+     * @request GET:/in-room-dining-food-orders/{id}
+     * @secure
+     */
+    getInRoomDiningFoodOrdersId: (id: number, params: RequestParams = {}) =>
+      this.request<InRoomDiningFoodOrderResponse, Error>({
+        path: `/in-room-dining-food-orders/${id}`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags In-room-dining-food-order
+     * @name PutInRoomDiningFoodOrdersId
+     * @request PUT:/in-room-dining-food-orders/{id}
+     * @secure
+     */
+    putInRoomDiningFoodOrdersId: (id: number, data: InRoomDiningFoodOrderRequest, params: RequestParams = {}) =>
+      this.request<InRoomDiningFoodOrderResponse, Error>({
+        path: `/in-room-dining-food-orders/${id}`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags In-room-dining-food-order
+     * @name DeleteInRoomDiningFoodOrdersId
+     * @request DELETE:/in-room-dining-food-orders/{id}
+     * @secure
+     */
+    deleteInRoomDiningFoodOrdersId: (id: number, params: RequestParams = {}) =>
+      this.request<number, Error>({
+        path: `/in-room-dining-food-orders/${id}`,
         method: "DELETE",
         secure: true,
         format: "json",

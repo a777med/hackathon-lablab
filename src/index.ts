@@ -37,6 +37,11 @@ bot.start(async (ctx) => {
   await ctx.reply(response);
 });
 
+bot.command('clear', async (ctx) => {
+  await model.clearChatHistory(ctx.chat.id.toString());
+  await ctx.reply('Chat history cleared');
+});
+
 bot.help((ctx) => {
   ctx.reply("Send me a message and I will echo it back to you.");
 });

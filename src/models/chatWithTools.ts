@@ -10,6 +10,7 @@ import { searchServicesTool } from "./tools/searchServices.ts";
 import { bookServicesTool } from "./tools/bookServices.ts";
 import { searchFoodMenuTool } from "./tools/searchFoodMenuTool.ts";
 import { UpstashRedisChatMessageHistory } from "langchain/stores/message/upstash_redis";
+import { orderFoodTool } from "./tools/orderFood.ts";
 
 const openAIApiKey = process.env.OPENAI_API_KEY!;
 
@@ -43,7 +44,8 @@ export class Model {
       searchServicesTool,
       reportIssuesTool,
       bookServicesTool,
-      searchFoodMenuTool
+      searchFoodMenuTool,
+      orderFoodTool
     ];
     this.openai = new OpenAIApi(configuration);
     this.model = new ChatOpenAI(params, configuration);
@@ -78,12 +80,23 @@ export class Model {
         }
       );
     }
-
     const response = await this.executors[sessionId].call({ input });
 
     console.log(`Model input: ${  input}`);
     console.log(`Model response: ${  response.output}`);
 
     return response.output;
+  }
+
+  public async clearChatHistory(sessionId: string) {
+    // await this.executors[sessionId].agent.plan()
+    const chatHistory = new UpstashRedisChatMessageHistory({
+      sessionId, 
+      config: {
+        url: process.env.UPSTASH_URL as string, 
+        token: process.env.UPSTASH_TOKEN as string, 
+      },
+    });
+    chatHistory.clear();
   }
 }
