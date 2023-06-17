@@ -13,7 +13,6 @@ import { searchFoodMenuTool } from "./tools/searchFoodMenuTool.ts";
 const openAIApiKey = process.env.OPENAI_API_KEY!;
 
 const params = {
-  verbose: true,
   temperature: 0,
   openAIApiKey,
   modelName: "gpt-3.5-turbo-16k",
@@ -58,7 +57,8 @@ export class Model {
           }),
           agentArgs: {
             systemMessage: `You are a hotel concierge. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue. the current date-time is ${new Date()}.`
-          }
+          },
+          verbose: true,
         }
       );
     }

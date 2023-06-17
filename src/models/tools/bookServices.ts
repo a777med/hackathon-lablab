@@ -5,7 +5,7 @@ export const bookServicesTool = new DynamicTool({
   name: "order a service",
   // TODO: update description to always have the room number, datetime, and service from user input
   //  at the moment the model creates mostly a random room number and datetime
-  description: `useful for booking a service from the available hotel services. input is a JSON string matching the following schema \`\`\`typescript
+  description: `useful for booking a service from the available hotel services. input is a JSON string matching the following schema \`\`\`
             room_number: string;
             datetime: string;
             pax?: number;
@@ -28,13 +28,12 @@ export const bookServicesTool = new DynamicTool({
       const parsedInput = JSON.parse(input);
 
       if (!parsedInput.room_number) {
-        return "Please provide a room number in the JSON object input. Ask the user for the room number and then call this function again.";
+        return "Ask the user for the room number and then call this function again.";
       }
 
       await api.serviceOrders.postServiceOrders({
         data: {
           ...parsedInput,
-          roomnumber: parsedInput.room_number,
         },
       });
 
