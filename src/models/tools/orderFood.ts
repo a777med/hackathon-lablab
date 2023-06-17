@@ -5,7 +5,7 @@ type Input = {
   room_number: number;
   special_note?: string;
   food_order_items: {
-    food_item: number | string;
+    food_item_id: number | string;
     quantity: number;
   }[];
 };
@@ -17,7 +17,7 @@ export const orderFoodTool = new DynamicTool({
             room_number: number;
             special_note?: string;
             food_order_items: {{
-              food_item_id: number | string; // this is the id of the food item from the food menu
+              food_item_id: number; // this is the id of the food item from the food menu
               quantity: number;
             }}[];
         }}
@@ -35,6 +35,7 @@ export const orderFoodTool = new DynamicTool({
           },
         },
       });
+      
       console.log("input food order", input);
       const parsedInput: Input = JSON.parse(input);
 
@@ -50,10 +51,11 @@ export const orderFoodTool = new DynamicTool({
       for (const foodOrderItem of parsedInput.food_order_items) {
         const foodOrderItemResponse = await api.foodOrderItems.postFoodOrderItems({
           data: {
-            in_room_dining_food_menu: foodOrderItem.food_item,
+            in_room_dining_food_menu: foodOrderItem.food_item_id,
             quantity: foodOrderItem.quantity,
           },
         });
+        console.log('foodOrderItemResponse', foodOrderItemResponse);
         if (foodOrderItemResponse.data.data?.id)
           foodOrderItemIds.push(foodOrderItemResponse.data.data.id);
       }
@@ -68,8 +70,8 @@ export const orderFoodTool = new DynamicTool({
 
       return "Order placed successfully";
     } catch (e) {
-      console.error("strapi caught error while reporting an issue", e);
-      return "An error occured while reporting an issue";
+      console.error("strapi caught error while placing an order", e);
+      return "An error occured while placing the order.";
     }
   },
 });
