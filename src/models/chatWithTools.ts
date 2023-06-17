@@ -8,6 +8,7 @@ import { vectorStoreTool } from "./tools/vectorestoreQA.ts";
 import { reportIssuesTool } from "./tools/reportIssues.ts";
 import { searchServicesTool } from "./tools/searchServices.ts";
 import { bookServicesTool } from "./tools/bookServices.ts";
+import { searchFoodMenuTool } from "./tools/searchFoodMenuTool.ts";
 
 const openAIApiKey = process.env.OPENAI_API_KEY!;
 
@@ -36,7 +37,8 @@ export class Model {
       vectorStoreTool,
       searchServicesTool,
       reportIssuesTool,
-      bookServicesTool
+      bookServicesTool,
+      searchFoodMenuTool
     ];
     this.openai = new OpenAIApi(configuration);
     this.model = new ChatOpenAI(params, configuration);
