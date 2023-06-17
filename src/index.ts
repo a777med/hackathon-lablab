@@ -1,15 +1,8 @@
 import * as dotenv from "dotenv";
-import { getOrders } from "./agent.ts";
-import { queryDoc, storeDoc } from "./manage-docs.ts";
-import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { Telegraf } from "telegraf";
 import { Model as ChatWithTools } from "./models/chatWithTools.ts";
-import { QaDocModel } from "./agentClass.ts";
 
 dotenv.config();
-
-// TODO: study removal, this will probably be replaced by the telegram bot 
-// await getOrders();
 
 
 // TODO: expose endpoint to store pdf in pinecone
@@ -25,16 +18,13 @@ dotenv.config();
 // ], "test-namespace");
 
 
-// TODO: run telegram bot
 const telegramToken = process.env.TELEGRAM_TOKEN!;
 
 const bot = new Telegraf(telegramToken);
 const model = new ChatWithTools();
-// await model.init();
 
-bot.start(async (ctx) => {
-  const response = await model.call('You are a hotel concierge. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue.');
-  await ctx.reply(response);
+bot.start((ctx) => {
+  console.log("started:", ctx.from?.id);
 });
 
 bot.help((ctx) => {
