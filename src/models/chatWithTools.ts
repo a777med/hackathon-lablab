@@ -8,7 +8,7 @@ import { vectorStoreTool } from "./tools/vectorestoreQA.ts";
 import { reportIssuesTool } from "./tools/reportIssues.ts";
 import { searchServicesTool } from "./tools/searchServices.ts";
 import { bookServicesTool } from "./tools/bookServices.ts";
-import { searchFoodMenuTool } from "./tools/searchFoodMenuTool.ts";
+import { getFoodMenuTool, searchFoodMenuTool } from "./tools/searchFoodMenuTool.ts";
 import { UpstashRedisChatMessageHistory } from "langchain/stores/message/upstash_redis";
 import { orderFoodTool } from "./tools/orderFood.ts";
 
@@ -44,8 +44,9 @@ export class Model {
       searchServicesTool,
       reportIssuesTool,
       bookServicesTool,
+      getFoodMenuTool,
+      orderFoodTool,
       searchFoodMenuTool,
-      orderFoodTool
     ];
     this.openai = new OpenAIApi(configuration);
     this.model = new ChatOpenAI(params, configuration);
@@ -74,7 +75,7 @@ export class Model {
             })
           }),
           agentArgs: {
-            systemMessage: `I want you to act as Karam, a caring concierge support staff for the Hotel Royal Oasis in Riyadh. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue. the current date-time is ${new Date()}. `
+            systemMessage: `I want you to act as Karam, a caring concierge support staff for the Hotel Royal Oasis in Riyadh. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue. the current date-time is ${new Date()}. When you want to include image in your response for food menu items, wrap the image URL in underscores.`,
           },
           verbose: true,
         }

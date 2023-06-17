@@ -22,6 +22,8 @@ export const orderFoodTool = new DynamicTool({
             }}[];
         }}
         \`\`\`.
+        If you don't have room number, ask the user for them.
+        If you don't have a food item ID, use the search food menu tool to get the IDs.
         `,
   func: async (input) => {
     try {
@@ -46,26 +48,47 @@ export const orderFoodTool = new DynamicTool({
         return "Ask the user for the food order items before calling the food order tool.";
       }
 
-      const foodOrderItemIds = [];
-      for (const foodOrderItem of parsedInput.food_order_items) {
-        const foodOrderItemResponse = await api.foodOrderItems.postFoodOrderItems({
+      // const foodOrderItemIds = [];
+      // for (const foodOrderItem of parsedInput.food_order_items) {
+      //   const foodOrderItemResponse = await api.foodOrderItems.postFoodOrderItems({
+      //     data: {
+      //       in_room_dining_food_menu: foodOrderItem.food_item_id,
+      //       quantity: foodOrderItem.quantity,
+      //     },
+      //   });
+      //   console.log('foodOrderItemResponse', foodOrderItemResponse);
+      //   if (foodOrderItemResponse.data.data?.id)
+      //     foodOrderItemIds.push(foodOrderItemResponse.data.data.id);
+      // }
+      
+      try {
+        const order = await api.inRoomDiningFoodOrders.postInRoomDiningFoodOrders({
           data: {
-            in_room_dining_food_menu: foodOrderItem.food_item_id,
-            quantity: foodOrderItem.quantity,
+            // food_order_items: foodOrderItemIds,
+            room_number: parsedInput.room_number.toString(),
+            special_note: parsedInput.special_note || "",
           },
         });
-        console.log('foodOrderItemResponse', foodOrderItemResponse);
-        if (foodOrderItemResponse.data.data?.id)
-          foodOrderItemIds.push(foodOrderItemResponse.data.data.id);
+
+        for (const foodOrderItem of parsedInput.food_order_items) {
+          try {
+            const foodOrderItemResponse = await api.foodOrderItems.postFoodOrderItems({
+              data: {
+                in_room_dining_food_menu: foodOrderItem.food_item_id,
+                in_room_dining_food_order: order.data.data?.id,
+                quantity: foodOrderItem.quantity,
+              },
+            });
+            console.log('successfully added food order item', foodOrderItemResponse);
+          } catch (e) {
+            console.error("error while adding food order item", e);
+            return "The food item ID is not valid. Please, use the search food menu tool to get the food item ID.";
+          }
+        }  
+      } catch (e) {
+        console.error("error creating order entity", e);
+        return "An error occured while placing the order.";
       }
-      
-      await api.inRoomDiningFoodOrders.postInRoomDiningFoodOrders({
-        data: {
-          food_order_items: foodOrderItemIds,
-          room_number: parsedInput.room_number.toString(),
-          special_note: parsedInput.special_note || "",
-        },
-      });
 
       return "Order placed successfully";
     } catch (e) {
