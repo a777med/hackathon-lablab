@@ -32,8 +32,9 @@ const bot = new Telegraf(telegramToken);
 const model = new ChatWithTools();
 // await model.init();
 
-bot.start((ctx) => {
-  ctx.reply("Welcome to my Telegram bot!");
+bot.start(async (ctx) => {
+  const response = await model.call('You are a hotel concierge. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue.');
+  await ctx.reply(response);
 });
 
 bot.help((ctx) => {

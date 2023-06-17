@@ -10,8 +10,8 @@ const vectorStore = await PineconeStore.fromExistingIndex(
     { pineconeIndex, namespace: "food-menu-test" }
 );
 export const vectorStoreTool = new VectorStoreQATool(
-  "Vector Store QA Tool",
-  "This is Vectore Store. Use this tool to search general information about the hotel. Input should be a string",
+  "Vector Store About Hotel & Food Menu",
+  "This is Vectore Store. Use this tool to search general information about the hotel. It can also be used to look up food menu items that the hotel's restaurant offers.",
   {
     vectorStore,
     llm
