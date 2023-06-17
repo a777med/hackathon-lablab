@@ -9,6 +9,7 @@ import { reportIssuesTool } from "./tools/reportIssues.ts";
 import { searchServicesTool } from "./tools/searchServices.ts";
 import { bookServicesTool } from "./tools/bookServices.ts";
 import { searchFoodMenuTool } from "./tools/searchFoodMenuTool.ts";
+import { UpstashRedisChatMessageHistory } from "langchain/stores/message/upstash_redis";
 
 const openAIApiKey = process.env.OPENAI_API_KEY!;
 
@@ -23,8 +24,13 @@ const params = {
 
 export class Model {
   public tools: Tool[];
-  public executor?: AgentExecutor;
+
+  public executors: {
+    [sessionId: string]: AgentExecutor;
+  };
+
   public openai: OpenAIApi;
+
   public model: ChatOpenAI;
 
   constructor() {
@@ -41,11 +47,13 @@ export class Model {
     ];
     this.openai = new OpenAIApi(configuration);
     this.model = new ChatOpenAI(params, configuration);
+
+    this.executors = {};
   }
 
-  public async call(input: string) {
-    if (!this.executor) {
-      this.executor = await initializeAgentExecutorWithOptions(
+  public async call(input: string, sessionId: string) {
+    if (!this.executors[sessionId]) {
+      this.executors[sessionId] = await initializeAgentExecutorWithOptions(
         this.tools,
         this.model,
         {
@@ -54,6 +62,14 @@ export class Model {
             returnMessages: true,
             memoryKey: "chat_history",
             inputKey: "input",
+            chatHistory: new UpstashRedisChatMessageHistory({
+              sessionId, // Or some other unique identifier for the conversation
+              // sessionTTL: 300, // 5 minutes, omit this parameter to make sessions never expire
+              config: {
+                url: process.env.UPSTASH_URL as string, 
+                token: process.env.UPSTASH_TOKEN as string, 
+              },
+            })
           }),
           agentArgs: {
             systemMessage: `You are a hotel concierge. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue. the current date-time is ${new Date()}.`
@@ -63,10 +79,10 @@ export class Model {
       );
     }
 
-    const response = await this.executor!.call({ input });
+    const response = await this.executors[sessionId].call({ input });
 
-    console.log("Model input: " + input);
-    console.log("Model response: " + response.output);
+    console.log(`Model input: ${  input}`);
+    console.log(`Model response: ${  response.output}`);
 
     return response.output;
   }

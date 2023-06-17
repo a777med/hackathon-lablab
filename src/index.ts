@@ -1,8 +1,15 @@
 import * as dotenv from "dotenv";
+import { getOrders } from "./agent.ts";
+import { queryDoc, storeDoc } from "./manage-docs.ts";
+import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { Telegraf } from "telegraf";
 import { Model as ChatWithTools } from "./models/chatWithTools.ts";
+import { QaDocModel } from "./agentClass.ts";
 
 dotenv.config();
+
+// TODO: study removal, this will probably be replaced by the telegram bot 
+// await getOrders();
 
 
 // TODO: expose endpoint to store pdf in pinecone
@@ -18,13 +25,16 @@ dotenv.config();
 // ], "test-namespace");
 
 
-const telegramToken = process.env.TELEGRAM_TOKEN!;
+// TODO: run telegram bot
+const telegramToken = process.env.TELEGRAM_TOKEN as string;
 
 const bot = new Telegraf(telegramToken);
 const model = new ChatWithTools();
+// await model.init();
 
-bot.start((ctx) => {
-  console.log("started:", ctx.from?.id);
+bot.start(async (ctx) => {
+  const response = await model.call('You are a hotel concierge. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue.', ctx.chat.id.toString());
+  await ctx.reply(response);
 });
 
 bot.help((ctx) => {
@@ -32,7 +42,7 @@ bot.help((ctx) => {
 });
 
 bot.on("message", async (ctx) => {
-  const text = (ctx.message as any).text;
+  const {text} = ctx.message as any;
 
   if (!text) {
     ctx.reply("Please send a text message.");
@@ -43,8 +53,8 @@ bot.on("message", async (ctx) => {
 
   await ctx.sendChatAction("typing");
   try {
-    const response = await model.call(text);
-
+    const response = await model.call(text, ctx.chat.id.toString());
+    console.log('chat id: ', ctx.chat.id.toString());
     await ctx.reply(response);
   } catch (error) {
     console.log(error);
@@ -56,7 +66,7 @@ bot.on("message", async (ctx) => {
     console.log({ message });
 
     await ctx.reply(
-      "Whoops! There was an error while talking to OpenAI. Error: " + message
+      `Whoops! There was an error while talking to OpenAI. Error: ${  message}`
     );
   }
 });
