@@ -1,6 +1,5 @@
 import * as dotenv from "dotenv";
-import { queryDoc, storeDoc } from "./manage-docs.ts";
-import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+import { storeDoc } from "./manage-docs.ts";
 import { Telegraf } from "telegraf";
 import { Model as ChatWithTools } from "./models/chatWithTools.ts";
 import { existsSync, mkdirSync } from "fs";
