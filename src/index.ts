@@ -3,6 +3,9 @@ import { queryDoc, storeDoc } from "./manage-docs.ts";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { Telegraf } from "telegraf";
 import { Model as ChatWithTools } from "./models/chatWithTools.ts";
+import { existsSync, mkdirSync } from "fs";
+import { downloadVoiceFile } from "./lib/downloadVoiceFile.ts";
+import { postToWhisper } from "./lib/postToWhisper.ts";
 
 dotenv.config();
 
@@ -19,10 +22,15 @@ dotenv.config();
 // ], "test-namespace");
 
 
+const workDir = "./tmp";
 const telegramToken = process.env.TELEGRAM_TOKEN as string;
 
 const bot = new Telegraf(telegramToken);
 const model = new ChatWithTools();
+
+if (!existsSync(workDir)) {
+  mkdirSync(workDir);
+}
 
 bot.start((ctx) => {
   console.log("started:", ctx.from?.id);
@@ -35,6 +43,45 @@ bot.command('clear', async (ctx) => {
 
 bot.help((ctx) => {
   ctx.reply("Send me a message and I will echo it back to you.");
+});
+
+
+bot.on("voice", async (ctx) => {
+
+  const voice = ctx.message.voice;
+  await ctx.sendChatAction("typing");
+
+  let localFilePath;
+
+  try {
+    localFilePath = await downloadVoiceFile(workDir, voice.file_id, bot);
+  } catch (error) {
+    console.log(error);
+    await ctx.reply(
+      "Whoops! There was an error while downloading the voice file. Maybe ffmpeg is not installed?"
+    );
+    return;
+  }
+
+  const transcription = await postToWhisper(model.openai, localFilePath);
+
+  await ctx.reply(`Transcription: ${transcription}`);
+  await ctx.sendChatAction("typing");
+
+  let response;
+  try {
+    response = await model.call(transcription, ctx.chat.id.toString());
+  } catch (error) {
+    console.log(error);
+    await ctx.reply(
+      "Whoops! There was an error while talking to OpenAI. See logs for details."
+    );
+    return;
+  }
+
+  console.log(response);
+
+  await ctx.reply(response);
 });
 
 bot.on("message", async (ctx) => {
