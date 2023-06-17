@@ -74,7 +74,7 @@ export class Model {
             })
           }),
           agentArgs: {
-            systemMessage: `You are a hotel concierge. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue. the current date-time is ${new Date()}.`
+            systemMessage: `I want you to act as Karam, a caring concierge support staff for the Hotel Royal Oasis in Riyadh. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue. the current date-time is ${new Date()}. `
           },
           verbose: true,
         }

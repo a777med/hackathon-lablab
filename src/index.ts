@@ -1,21 +1,15 @@
 import * as dotenv from "dotenv";
-import { getOrders } from "./agent.ts";
 import { queryDoc, storeDoc } from "./manage-docs.ts";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 import { Telegraf } from "telegraf";
 import { Model as ChatWithTools } from "./models/chatWithTools.ts";
-import { QaDocModel } from "./agentClass.ts";
 
 dotenv.config();
-
-// TODO: study removal, this will probably be replaced by the telegram bot 
-// await getOrders();
-
 
 // TODO: expose endpoint to store pdf in pinecone
 // a possible solution to the problem of deleting pdfs from pinecone
 // is to store the pdfs with their name as the namespace
-// await storeDoc(new PDFLoader("docs/april-2023.pdf"), "test-namespace");
+// await storeDoc(new PDFLoader("docs/Hotel Name_ Royal Oasis Riyadh Description.pdf"), "royal-oasis-hotel");
 
 
 // TODO: study removal, this will probably be replaced by the telegram bot 
@@ -25,17 +19,14 @@ dotenv.config();
 // ], "test-namespace");
 
 
-// TODO: run telegram bot
 const telegramToken = process.env.TELEGRAM_TOKEN as string;
 
 const bot = new Telegraf(telegramToken);
 const model = new ChatWithTools();
-// await model.init();
 
-bot.start(async (ctx) => {
-  const response = await model.call('You are a hotel concierge. A guest who\'s staying in one of our rooms is going to ask you questions. Please, ask for the guest\'s name and room number before booking or reporting an issue.', ctx.chat.id.toString());
-  await ctx.reply(response);
-});
+bot.start((ctx) => {
+  console.log("started:", ctx.from?.id);
+ });
 
 bot.command('clear', async (ctx) => {
   await model.clearChatHistory(ctx.chat.id.toString());
