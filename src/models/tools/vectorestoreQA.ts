@@ -5,9 +5,10 @@ import { VectorStoreQATool } from "langchain/tools";
 import { PineconeStore } from "langchain/vectorstores/pinecone";
 
 const llm = new ChatOpenAI({temperature: 0});
+const namespace = "food-menu-test";
 const vectorStore = await PineconeStore.fromExistingIndex(
     new OpenAIEmbeddings(),
-    { pineconeIndex, namespace: "food-menu-test" }
+    { pineconeIndex, namespace }
 );
 export const vectorStoreTool = new VectorStoreQATool(
   "Vector Store About Hotel & Food Menu",

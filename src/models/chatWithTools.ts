@@ -5,7 +5,6 @@ import { BufferMemory } from "langchain/memory";
 import { Configuration } from "openai";
 import { OpenAIApi } from "openai";
 import { vectorStoreTool } from "./tools/vectorestoreQA.ts";
-import { StrapiTool } from "@/tools/strapi.ts";
 import { Api } from "@/types/Api.ts";
 
 const openAIApiKey = process.env.OPENAI_API_KEY!;
@@ -31,7 +30,6 @@ export class Model {
       apiKey: openAIApiKey,
     });
 
-    // this.tools = [vectorStoreTool, new StrapiTool()];
     this.tools = [
       vectorStoreTool,
       new DynamicTool({
@@ -43,7 +41,7 @@ export class Model {
               baseUrl: `https://determined-boot-55a0a0a0d0.strapiapp.com/api`,
               baseApiParams: {
                 headers: {
-                  'Authorization': `Bearer e9a6bf8cfd2b4d799cba75db0a66c5a62d931d3114e48d45fe9af0095173b75b9950fe97e69e0ea024ca134fd04238d8a4687466722ec8eca9bbf9731beabce302c3d6e6ff4153127e93e47112eb7bfb954ab4d4df2e57ab07b4e3a98b51035a164909545e3018481bec078c98f4f00b7fdb2c7e349d82e947b6f08564477495`,
+                  'Authorization': `Bearer ${process.env.STRAPI_API_KEY}`,
                   'accept': 'application/json',
                 }
               }
@@ -73,7 +71,7 @@ export class Model {
               baseUrl: `https://determined-boot-55a0a0a0d0.strapiapp.com/api`,
               baseApiParams: {
                 headers: {
-                  'Authorization': `Bearer e9a6bf8cfd2b4d799cba75db0a66c5a62d931d3114e48d45fe9af0095173b75b9950fe97e69e0ea024ca134fd04238d8a4687466722ec8eca9bbf9731beabce302c3d6e6ff4153127e93e47112eb7bfb954ab4d4df2e57ab07b4e3a98b51035a164909545e3018481bec078c98f4f00b7fdb2c7e349d82e947b6f08564477495`,
+                  'Authorization': `Bearer ${process.env.STRAPI_API_KEY}`,
                   'accept': 'application/json',
                 }
               }
@@ -93,7 +91,6 @@ export class Model {
             });
 
             return "Issue reported successfully";
-            // return JSON.stringify(resp.data);
           } catch (e) {
             console.error('strapi caught error while reporting an issue', e);
             return "An error occured while reporting an issue";
