@@ -11,7 +11,6 @@ export const reportIssuesTool = new DynamicTool({
           department?: "Housekeeping" | "Engineering" | "IT" | "Fooddepartment";
           description?: string;
         \`\`\`.
-        make sure you get the room number from the user.
         `,
   func: async (input) => {
     try {

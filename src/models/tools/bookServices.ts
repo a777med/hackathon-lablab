@@ -5,12 +5,12 @@ export const bookServicesTool = new DynamicTool({
   name: "order a service",
   // TODO: update description to always have the room number, datetime, and service from user input
   //  at the moment the model creates mostly a random room number and datetime
-  description: `useful for booking a service from the available hotel services. input is a JSON string matching the following schema \`\`\`
+  description: `useful for booking a service from the available hotel services. input is a JSON string matching the following schema \`\`\`typescript
             room_number: string;
             datetime: string;
             pax?: number;
             special_note?: string;
-            service: number | string;
+            service: number;
         \`\`\`.
         if you don't have room_number, datetime, and service, ask the user for them. format the datetime as a string in the format \`YYYY-MM-DD HH:MM:SS\``,
   func: async (input) => {
@@ -34,6 +34,7 @@ export const bookServicesTool = new DynamicTool({
       await api.serviceOrders.postServiceOrders({
         data: {
           ...parsedInput,
+          service: parsedInput.service_id,
         },
       });
 
@@ -41,7 +42,7 @@ export const bookServicesTool = new DynamicTool({
     } catch (e) {
       console.error("strapi caught error while booking a service", e);
       console.log('error' + e);
-      return "An error occured while booking a service";
+      return "An error occured while booking a service" + e;
     }
   },
 });

@@ -12,7 +12,7 @@ type Input = {
 
 export const orderFoodTool = new DynamicTool({
   name: "order food",
-  description: `useful for reporting an issue to the hotel staff. The input is a JSON string matching the following schema \`\`\`typescript
+  description: `useful for ordering food from hotel restaurant. The input is a JSON string matching the following schema \`\`\`typescript
           {{
             room_number: number;
             special_note?: string;
@@ -22,7 +22,6 @@ export const orderFoodTool = new DynamicTool({
             }}[];
         }}
         \`\`\`.
-        make sure you get the room number from the user.
         `,
   func: async (input) => {
     try {
